@@ -1,0 +1,62 @@
+{
+  "name": "lung-disease-diagnosis",
+  "version": "1.0.0",
+  "description": "AI-powered lung disease diagnosis web application using deep learning",
+  "main": "next.config.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "test": "node scripts/test-complete.js",
+    "test:quick": "echo \"Running quick validation...\" && npm run lint",
+    "test:build": "npm run build",
+    "export": "next export",
+    "analyze": "ANALYZE=true next build",
+    "setup": "node scripts/setup.js || npm install",
+    "setup:win": "scripts\\setup.bat",
+    "setup:unix": "chmod +x scripts/setup.sh && ./scripts/setup.sh",
+    "clean": "rm -rf .next node_modules package-lock.json",
+    "clean:win": "rmdir /s /q .next node_modules & del package-lock.json",
+    "check-deps": "npm outdated",
+    "update-deps": "npm update",
+    "deploy:check": "npm run test && npm run build",
+    "deploy:vercel": "vercel --prod"
+  },
+  "keywords": [
+    "lung-disease",
+    "medical-ai",
+    "computer-vision",
+    "tensorflow",
+    "next.js",
+    "healthcare"
+  ],
+  "author": "Your Name <your-email@example.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
+    "@tensorflow/tfjs": "^4.15.0",
+    "@tensorflow/tfjs-node": "^4.15.0",
+    "@tensorflow/tfjs-backend-cpu": "^4.15.0",
+    "@tensorflow/tfjs-backend-webgl": "^4.15.0",
+    "lucide-react": "^0.263.1",
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
+    "sharp": "^0.32.6"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^15.3.5",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "^15.3.5",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

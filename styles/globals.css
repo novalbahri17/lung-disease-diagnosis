@@ -1,0 +1,310 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+/* Custom Medical Shadow */
+.shadow-medical {
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);
+}
+
+.shadow-medical-lg {
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05);
+}
+
+/* Custom Components */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  .btn-primary {
+    @apply btn bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-medical;
+  }
+
+  .btn-secondary {
+    @apply btn bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500;
+  }
+
+  .btn-success {
+    @apply btn bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+  }
+
+  .btn-warning {
+    @apply btn bg-yellow-600 text-white hover:bg-yellow-700 focus:ring-yellow-500;
+  }
+
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500;
+  }
+
+  .btn-ghost {
+    @apply btn text-gray-700 hover:bg-gray-100 focus:ring-gray-500;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-medical border border-gray-200 p-6 transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-medical-lg hover:-translate-y-1;
+  }
+
+  .card-compact {
+    @apply card p-4;
+  }
+
+  .input {
+    @apply block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm transition-all duration-200;
+  }
+
+  .medical-gradient {
+    @apply bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .medical-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .drag-active {
+    @apply border-blue-500 bg-blue-50;
+  }
+
+  .drag-reject {
+    @apply border-red-500 bg-red-50;
+  }
+}
+
+/* Loading Animation */
+.loading-pulse {
+  animation: loading-pulse 1.5s infinite;
+}
+
+@keyframes loading-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Medical Chart Styles */
+.confidence-bar {
+  @apply relative h-4 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.confidence-fill {
+  @apply h-full rounded-full transition-all duration-1000 ease-out;
+}
+
+/* Responsive Image Upload */
+.upload-area {
+  @apply border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors duration-200;
+}
+
+.upload-area.drag-over {
+  @apply border-blue-500 bg-blue-50;
+}
+
+/* Result Cards */
+.result-card {
+  @apply bg-white rounded-lg shadow-lg p-6 border-l-4;
+}
+
+.result-normal {
+  @apply border-l-green-500;
+}
+
+.result-warning {
+  @apply border-l-yellow-500;
+}
+
+.result-danger {
+  @apply border-l-red-500;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+  
+  .card {
+    @apply p-4;
+  }
+  
+  .btn {
+    @apply text-xs px-3 py-2;
+  }
+
+  .btn-lg {
+    @apply px-4 py-2.5 text-sm;
+  }
+
+  /* Mobile-specific diagnosis result */
+  .diagnosis-result-mobile {
+    @apply space-y-4;
+  }
+
+  .confidence-scores-mobile {
+    @apply text-xs;
+  }
+
+  /* Mobile image upload */
+  .upload-area-mobile {
+    @apply p-4 text-sm;
+  }
+
+  /* Mobile navigation */
+  .mobile-nav {
+    @apply fixed inset-0 z-50 bg-white;
+  }
+
+  /* Stack buttons vertically on mobile */
+  .btn-group-mobile {
+    @apply flex flex-col space-y-2 w-full;
+  }
+
+  .btn-group-mobile .btn {
+    @apply w-full justify-center;
+  }
+}
+
+/* Tablet Responsive */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .card {
+    @apply p-5;
+  }
+
+  .medical-grid {
+    @apply grid-cols-2 gap-4;
+  }
+}
+
+/* Large Screen Optimizations */
+@media (min-width: 1025px) {
+  .container-xl {
+    @apply max-w-6xl mx-auto;
+  }
+
+  .medical-grid {
+    @apply grid-cols-3 gap-6;
+  }
+
+  .diagnosis-layout {
+    @apply grid grid-cols-3 gap-8;
+  }
+
+  .diagnosis-main {
+    @apply col-span-2;
+  }
+
+  .diagnosis-sidebar {
+    @apply col-span-1;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break {
+    page-break-before: always;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .card {
+    @apply border-2 border-black;
+  }
+  
+  .btn {
+    @apply border-2 border-black;
+  }
+}
