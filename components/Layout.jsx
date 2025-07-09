@@ -158,7 +158,7 @@ const Layout = ({ children, title, description, className = '' }) => {
                 </h3>
                 <div className="space-y-3">
                   <a
-                    href='novalbahri17@gmail.com'
+                    href='mailto:novalbahri17@gmail.com'
                     className="flex items-center space-x-2 text-sm text-gray-600 transition-colors hover:text-blue-600"
                   >
                     <Mail className="w-4 h-4" />
