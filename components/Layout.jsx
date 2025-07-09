@@ -42,13 +42,13 @@ const Layout = ({ children, title, description, className = '' }) => {
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
+        <header className="bg-white border-b border-gray-200 shadow-sm">
+          <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
               {/* Logo */}
               <Link href="/" className="flex items-center space-x-3">
                 <div className="p-2 bg-blue-600 rounded-lg">
-                  <Stethoscope className="h-6 w-6 text-white" />
+                  <Stethoscope className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <h1 className="text-xl font-bold text-gray-900">
@@ -59,12 +59,12 @@ const Layout = ({ children, title, description, className = '' }) => {
               </Link>
 
               {/* Desktop Navigation */}
-              <nav className="hidden md:flex space-x-8">
+              <nav className="hidden space-x-8 md:flex">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+                    className="px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-blue-600"
                   >
                     {item.name}
                   </Link>
@@ -74,26 +74,26 @@ const Layout = ({ children, title, description, className = '' }) => {
               {/* Mobile menu button */}
               <button
                 type="button"
-                className="md:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
+                className="p-2 text-gray-400 rounded-md md:hidden hover:text-gray-500 hover:bg-gray-100"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? (
-                  <X className="h-6 w-6" />
+                  <X className="w-6 h-6" />
                 ) : (
-                  <Menu className="h-6 w-6" />
+                  <Menu className="w-6 h-6" />
                 )}
               </button>
             </div>
 
             {/* Mobile Navigation */}
             {mobileMenuOpen && (
-              <div className="md:hidden py-4 border-t border-gray-200">
+              <div className="py-4 border-t border-gray-200 md:hidden">
                 <nav className="space-y-2">
                   {navigation.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md text-sm font-medium transition-colors"
+                      className="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors rounded-md hover:text-blue-600 hover:bg-gray-50"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
@@ -111,20 +111,20 @@ const Layout = ({ children, title, description, className = '' }) => {
         </main>
 
         {/* Footer */}
-        <footer className="bg-white border-t border-gray-200 mt-auto">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <footer className="mt-auto bg-white border-t border-gray-200">
+          <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {/* About */}
               <div>
-                <div className="flex items-center space-x-3 mb-4">
+                <div className="flex items-center mb-4 space-x-3">
                   <div className="p-2 bg-blue-600 rounded-lg">
-                    <Stethoscope className="h-5 w-5 text-white" />
+                    <Stethoscope className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-900">
                     {APP_CONFIG.NAME}
                   </h3>
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                <p className="mb-4 text-sm leading-relaxed text-gray-600">
                   Aplikasi AI untuk diagnosis penyakit paru-paru dari citra X-ray 
                   menggunakan teknologi deep learning dan computer vision.
                 </p>
@@ -135,15 +135,15 @@ const Layout = ({ children, title, description, className = '' }) => {
 
               {/* Quick Links */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  Quick Links
+                <h3 className="mb-4 text-lg font-semibold text-gray-900">
+                  Tautan Cepat
                 </h3>
                 <nav className="space-y-2">
                   {navigation.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="block text-gray-600 hover:text-blue-600 text-sm transition-colors"
+                      className="block text-sm text-gray-600 transition-colors hover:text-blue-600"
                     >
                       {item.name}
                     </Link>
@@ -153,40 +153,40 @@ const Layout = ({ children, title, description, className = '' }) => {
 
               {/* Contact & Social */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  Contact & Support
+                <h3 className="mb-4 text-lg font-semibold text-gray-900">
+                  Kontak & Dukungan
                 </h3>
                 <div className="space-y-3">
                   <a
-                    href={`mailto:${APP_CONFIG.CONTACT_EMAIL}`}
-                    className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 text-sm transition-colors"
+                    href='novalbahri17@gmail.com'
+                    className="flex items-center space-x-2 text-sm text-gray-600 transition-colors hover:text-blue-600"
                   >
-                    <Mail className="h-4 w-4" />
-                    <span>{APP_CONFIG.CONTACT_EMAIL}</span>
+                    <Mail className="w-4 h-4" />
+                    <span>novalbahri17@gmail.com</span>
                   </a>
                   <a
-                    href={APP_CONFIG.GITHUB_URL}
+                    href='https://github.com/novalbahri17/lung-disease-diagnosis'
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 text-sm transition-colors"
+                    className="flex items-center space-x-2 text-sm text-gray-600 transition-colors hover:text-blue-600"
                   >
-                    <Github className="h-4 w-4" />
-                    <span>GitHub Repository</span>
+                    <Github className="w-4 h-4" />
+                    <span>Repositori GitHub</span>
                   </a>
                 </div>
               </div>
             </div>
 
             {/* Bottom Bar */}
-            <div className="mt-8 pt-8 border-t border-gray-200">
-              <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <p className="text-gray-500 text-sm">
-                  © {new Date().getFullYear()} {APP_CONFIG.NAME}. All rights reserved.
+            <div className="pt-8 mt-8 border-t border-gray-200">
+              <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
+                <p className="text-sm text-gray-500">
+                  © {new Date().getFullYear()} {APP_CONFIG.NAME}. Semua hak dilindungi.
                 </p>
                 <div className="flex items-center space-x-6 text-xs text-gray-500">
-                  <span>Made with ❤️ for education</span>
+                  <span>Dibuat dengan ❤️ untuk edukasi</span>
                   <span>•</span>
-                  <span>Not for medical use</span>
+                  <span>Bukan untuk penggunaan medis</span>
                 </div>
               </div>
             </div>

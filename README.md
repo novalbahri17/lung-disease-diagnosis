@@ -350,7 +350,7 @@ Lihat panduan lengkap di [docs/deployment.md](./docs/deployment.md)
 Jika mengalami masalah, silakan:
 1. Cek [documentation](./docs/)
 2. Buka [GitHub Issues](https://github.com/your-username/lung-disease-diagnosis/issues)
-3. Contact: your-email@example.com
+3. Contact: novalbahri17@gmail.com
 
 ## 📄 License
 

@@ -52,19 +52,19 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Dukungan Email",
-      content: "support@lungdiagnosis.ai",
+      content: "novalbahri17@gmail.com",
       description: "Dapatkan bantuan untuk masalah teknis atau pertanyaan umum"
     },
     {
       icon: Phone,
       title: "Dukungan Telepon",
-      content: "+62 (21) 123-4567",
+      content: "+62 857-4879-5707",
       description: "Senin - Jumat, 09:00 - 18:00 WIB"
     },
     {
       icon: MapPin,
       title: "Lokasi Kantor",
-      content: "Jl. Kesehatan No. 123, Gedung Medika\nJakarta Selatan 12345",
+      content: "Jl. Semolowaru No.45, Menur Pumpungan, Kec. Sukolilo, Surabaya, Jawa Timur 60118",
       description: "Kunjungi kami untuk konsultasi langsung"
     },
     {
@@ -102,13 +102,13 @@ export default function Contact() {
       </Head>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
-        <div className="container mx-auto px-4">
+      <section className="py-16 bg-gradient-to-b from-blue-50 to-white">
+        <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
               Hubungi Kami
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            <p className="mb-8 text-xl leading-relaxed text-gray-600">
               Ada pertanyaan tentang platform diagnosis AI kami? Kami siap membantu. 
               Hubungi tim kami untuk dukungan, kemitraan, atau pertanyaan teknis.
             </p>
@@ -118,27 +118,27 @@ export default function Contact() {
 
       {/* Contact Info & Form Section */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <div className="container px-4 mx-auto">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12">
+            <div className="grid gap-12 lg:grid-cols-2">
               {/* Contact Information */}
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-8">
+                <h2 className="mb-8 text-3xl font-bold text-gray-900">
                   Informasi Kontak
                 </h2>
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
                     <Card key={index} className="p-6">
                       <div className="flex items-start space-x-4">
-                        <info.icon className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+                        <info.icon className="flex-shrink-0 w-6 h-6 mt-1 text-blue-600" />
                         <div>
-                          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                          <h3 className="mb-1 text-lg font-semibold text-gray-900">
                             {info.title}
                           </h3>
-                          <p className="text-gray-900 font-medium mb-1 whitespace-pre-line">
+                          <p className="mb-1 font-medium text-gray-900 whitespace-pre-line">
                             {info.content}
                           </p>
-                          <p className="text-gray-600 text-sm">
+                          <p className="text-sm text-gray-600">
                             {info.description}
                           </p>
                         </div>
@@ -151,14 +151,14 @@ export default function Contact() {
               {/* Contact Form */}
               <div>
                 <Card className="p-8">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  <h2 className="mb-6 text-3xl font-bold text-gray-900">
                     Kirim Pesan
                   </h2>
                   
                   {isSubmitted ? (
-                    <div className="text-center py-8">
-                      <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    <div className="py-8 text-center">
+                      <CheckCircle className="w-16 h-16 mx-auto mb-4 text-green-500" />
+                      <h3 className="mb-2 text-xl font-semibold text-gray-900">
                         Pesan Berhasil Dikirim!
                       </h3>
                       <p className="text-gray-600">
@@ -167,7 +167,7 @@ export default function Contact() {
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid md:grid-cols-2 gap-6">
+                      <div className="grid gap-6 md:grid-cols-2">
                         <Input
                           label="Nama Lengkap"
                           type="text"
@@ -233,7 +233,7 @@ export default function Contact() {
                       >
                         {isSubmitting ? (
                           <>
-                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                            <div className="w-4 h-4 mr-2 border-b-2 border-white rounded-full animate-spin"></div>
                             Mengirim...
                           </>
                         ) : (
@@ -254,18 +254,18 @@ export default function Contact() {
 
       {/* FAQ Section */}
       <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            <h2 className="mb-12 text-3xl font-bold text-center text-gray-900">
               Pertanyaan yang Sering Diajukan
             </h2>
             <div className="space-y-6">
               {faqItems.map((item, index) => (
                 <Card key={index} className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  <h3 className="mb-3 text-lg font-semibold text-gray-900">
                     {item.question}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="leading-relaxed text-gray-600">
                     {item.answer}
                   </p>
                 </Card>
@@ -277,13 +277,13 @@ export default function Contact() {
 
       {/* Enterprise Contact Section */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto">
-            <Card className="p-8 text-center bg-blue-50 border-blue-200">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            <Card className="p-8 text-center border-blue-200 bg-blue-50">
+              <h2 className="mb-4 text-2xl font-bold text-gray-900">
                 Solusi Enterprise
               </h2>
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="mb-6 leading-relaxed text-gray-600">
                 Ingin mengintegrasikan platform diagnosis AI kami ke dalam sistem kesehatan Anda? 
                 Kami menawarkan solusi khusus, akses API, dan dukungan khusus untuk klien enterprise.
               </p>
