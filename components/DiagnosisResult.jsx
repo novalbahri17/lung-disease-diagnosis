@@ -15,15 +15,18 @@ import {
   Clock,
   User,
   Stethoscope,
-  Upload
+  Upload,
+  FileDown
 } from 'lucide-react';
 import Card from './ui/Card';
 import Button from './ui/Button';
 import { DISEASE_INFO } from '../utils/constants';
+import { generateDiagnosisPDF } from '../utils/pdfExporter';
 
 const DiagnosisResult = ({ result, imageData, onReset, validationResults }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [showRecommendations, setShowRecommendations] = useState(true);
+  const [isExporting, setIsExporting] = useState(false);
 
   if (!result) return null;
 
@@ -90,8 +93,8 @@ const DiagnosisResult = ({ result, imageData, onReset, validationResults }) => {
     });
   };
 
-  // Export hasil diagnosis
-  const handleExport = () => {
+  // Export hasil diagnosis ke JSON
+  const handleExportJSON = () => {
     const exportData = {
       timestamp: formatTimestamp(),
       diagnosis: {
@@ -120,6 +123,27 @@ const DiagnosisResult = ({ result, imageData, onReset, validationResults }) => {
     a.download = `diagnosis-${Date.now()}.json`;
     a.click();
     URL.revokeObjectURL(url);
+  };
+
+  // Export hasil diagnosis ke PDF
+  const handleExportPDF = async () => {
+    setIsExporting(true);
+    try {
+      const exportResult = await generateDiagnosisPDF(result, imageData, validationResults);
+      
+      if (exportResult.success) {
+        // Show success message or notification
+        console.log('PDF exported successfully:', exportResult.fileName);
+      } else {
+        console.error('Failed to export PDF:', exportResult.error);
+        alert('Gagal mengekspor PDF. Silakan coba lagi.');
+      }
+    } catch (error) {
+      console.error('Error exporting PDF:', error);
+      alert('Gagal mengekspor PDF. Silakan coba lagi.');
+    } finally {
+      setIsExporting(false);
+    }
   };
 
   return (
@@ -415,12 +439,22 @@ const DiagnosisResult = ({ result, imageData, onReset, validationResults }) => {
       {/* Action Buttons */}
       <div className="flex flex-wrap gap-3 justify-center">
         <Button
-          onClick={handleExport}
+          onClick={handleExportPDF}
+          disabled={isExporting}
+          variant="primary"
+          className="flex items-center space-x-2"
+        >
+          <FileDown className="w-4 h-4" />
+          <span>{isExporting ? 'Mengekspor...' : 'Export PDF'}</span>
+        </Button>
+
+        <Button
+          onClick={handleExportJSON}
           variant="outline"
           className="flex items-center space-x-2"
         >
           <Download className="w-4 h-4" />
-          <span>Export Hasil</span>
+          <span>Export JSON</span>
         </Button>
 
         <Button
@@ -441,7 +475,7 @@ const DiagnosisResult = ({ result, imageData, onReset, validationResults }) => {
 
         <Button
           onClick={onReset}
-          variant="primary"
+          variant="secondary"
           className="flex items-center space-x-2"
         >
           <Upload className="w-4 h-4" />
