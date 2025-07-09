@@ -51,54 +51,54 @@ export default function Contact() {
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email Support",
+      title: "Dukungan Email",
       content: "support@lungdiagnosis.ai",
-      description: "Get help with technical issues or general inquiries"
+      description: "Dapatkan bantuan untuk masalah teknis atau pertanyaan umum"
     },
     {
       icon: Phone,
-      title: "Phone Support",
-      content: "+1 (555) 123-4567",
-      description: "Monday - Friday, 9:00 AM - 6:00 PM EST"
+      title: "Dukungan Telepon",
+      content: "+62 (21) 123-4567",
+      description: "Senin - Jumat, 09:00 - 18:00 WIB"
     },
     {
       icon: MapPin,
-      title: "Office Location",
-      content: "123 Medical Plaza, Suite 456\nBoston, MA 02101",
-      description: "Visit us for in-person consultations"
+      title: "Lokasi Kantor",
+      content: "Jl. Kesehatan No. 123, Gedung Medika\nJakarta Selatan 12345",
+      description: "Kunjungi kami untuk konsultasi langsung"
     },
     {
       icon: Clock,
-      title: "Response Time",
-      content: "< 24 hours",
-      description: "We aim to respond to all inquiries promptly"
+      title: "Waktu Respons",
+      content: "< 24 jam",
+      description: "Kami berusaha merespons semua pertanyaan dengan cepat"
     }
   ];
 
   const faqItems = [
     {
-      question: "How accurate is the AI diagnosis?",
-      answer: "Our AI model achieves over 95% accuracy on validated datasets. However, it should always be used as a diagnostic aid alongside professional medical judgment."
+      question: "Seberapa akurat diagnosis AI ini?",
+      answer: "Model AI kami mencapai akurasi lebih dari 95% pada dataset yang tervalidasi. Namun, ini harus selalu digunakan sebagai bantuan diagnostik bersama dengan penilaian medis profesional."
     },
     {
-      question: "What image formats are supported?",
-      answer: "We support JPEG, PNG, and DICOM formats. Images should be chest X-rays with good quality and proper orientation."
+      question: "Format gambar apa saja yang didukung?",
+      answer: "Kami mendukung format JPEG, PNG, dan DICOM. Gambar harus berupa foto rontgen dada dengan kualitas baik dan orientasi yang tepat."
     },
     {
-      question: "Is my medical data secure?",
-      answer: "Yes, we use enterprise-grade encryption and comply with HIPAA regulations. Your data is never stored permanently on our servers."
+      question: "Apakah data medis saya aman?",
+      answer: "Ya, kami menggunakan enkripsi tingkat enterprise dan mematuhi regulasi HIPAA. Data Anda tidak pernah disimpan secara permanen di server kami."
     },
     {
-      question: "Can I integrate this with my hospital system?",
-      answer: "Yes, we offer API integration and custom solutions for healthcare institutions. Contact our enterprise team for more details."
+      question: "Bisakah saya mengintegrasikan ini dengan sistem rumah sakit?",
+      answer: "Ya, kami menawarkan integrasi API dan solusi khusus untuk institusi kesehatan. Hubungi tim enterprise kami untuk detail lebih lanjut."
     }
   ];
 
   return (
     <Layout>
       <Head>
-        <title>Contact Us - Lung Disease Diagnosis AI</title>
-        <meta name="description" content="Get in touch with our team for support, partnerships, or questions about our AI-powered lung disease diagnosis platform." />
+        <title>Hubungi Kami - AI Diagnosis Penyakit Paru-paru</title>
+        <meta name="description" content="Hubungi tim kami untuk dukungan, kemitraan, atau pertanyaan tentang platform diagnosis penyakit paru-paru bertenaga AI kami." />
       </Head>
 
       {/* Hero Section */}
@@ -106,11 +106,11 @@ export default function Contact() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Get in Touch
+              Hubungi Kami
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Have questions about our AI diagnosis platform? We're here to help. 
-              Reach out to our team for support, partnerships, or technical inquiries.
+              Ada pertanyaan tentang platform diagnosis AI kami? Kami siap membantu. 
+              Hubungi tim kami untuk dukungan, kemitraan, atau pertanyaan teknis.
             </p>
           </div>
         </div>
@@ -124,7 +124,7 @@ export default function Contact() {
               {/* Contact Information */}
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-8">
-                  Contact Information
+                  Informasi Kontak
                 </h2>
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
@@ -152,75 +152,75 @@ export default function Contact() {
               <div>
                 <Card className="p-8">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    Send us a Message
+                    Kirim Pesan
                   </h2>
                   
                   {isSubmitted ? (
                     <div className="text-center py-8">
                       <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
                       <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                        Message Sent Successfully!
+                        Pesan Berhasil Dikirim!
                       </h3>
                       <p className="text-gray-600">
-                        Thank you for contacting us. We'll get back to you within 24 hours.
+                        Terima kasih telah menghubungi kami. Kami akan merespons dalam 24 jam.
                       </p>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid md:grid-cols-2 gap-6">
                         <Input
-                          label="Full Name"
+                          label="Nama Lengkap"
                           type="text"
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          placeholder="Your full name"
+                          placeholder="Nama lengkap Anda"
                         />
                         <Input
-                          label="Email Address"
+                          label="Alamat Email"
                           type="email"
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
                           required
-                          placeholder="your.email@example.com"
+                          placeholder="email.anda@contoh.com"
                         />
                       </div>
                       
                       <Input
-                        label="Inquiry Type"
+                        label="Jenis Pertanyaan"
                         type="select"
                         name="type"
                         value={formData.type}
                         onChange={handleInputChange}
                         options={[
-                          { value: 'general', label: 'General Inquiry' },
-                          { value: 'technical', label: 'Technical Support' },
-                          { value: 'partnership', label: 'Partnership' },
-                          { value: 'enterprise', label: 'Enterprise Solutions' },
-                          { value: 'feedback', label: 'Feedback' }
+                          { value: 'general', label: 'Pertanyaan Umum' },
+                          { value: 'technical', label: 'Dukungan Teknis' },
+                          { value: 'partnership', label: 'Kemitraan' },
+                          { value: 'enterprise', label: 'Solusi Enterprise' },
+                          { value: 'feedback', label: 'Masukan' }
                         ]}
                       />
                       
                       <Input
-                        label="Subject"
+                        label="Subjek"
                         type="text"
                         name="subject"
                         value={formData.subject}
                         onChange={handleInputChange}
                         required
-                        placeholder="Brief description of your inquiry"
+                        placeholder="Deskripsi singkat pertanyaan Anda"
                       />
                       
                       <Input
-                        label="Message"
+                        label="Pesan"
                         type="textarea"
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
                         required
-                        placeholder="Please provide details about your inquiry..."
+                        placeholder="Silakan berikan detail tentang pertanyaan Anda..."
                         rows={6}
                       />
                       
@@ -234,12 +234,12 @@ export default function Contact() {
                         {isSubmitting ? (
                           <>
                             <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                            Sending...
+                            Mengirim...
                           </>
                         ) : (
                           <>
                             <Send className="w-4 h-4 mr-2" />
-                            Send Message
+                            Kirim Pesan
                           </>
                         )}
                       </Button>
@@ -257,7 +257,7 @@ export default function Contact() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Frequently Asked Questions
+              Pertanyaan yang Sering Diajukan
             </h2>
             <div className="space-y-6">
               {faqItems.map((item, index) => (
@@ -281,15 +281,15 @@ export default function Contact() {
           <div className="max-w-4xl mx-auto">
             <Card className="p-8 text-center bg-blue-50 border-blue-200">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Enterprise Solutions
+                Solusi Enterprise
               </h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Looking to integrate our AI diagnosis platform into your healthcare system? 
-                We offer custom solutions, API access, and dedicated support for enterprise clients.
+                Ingin mengintegrasikan platform diagnosis AI kami ke dalam sistem kesehatan Anda? 
+                Kami menawarkan solusi khusus, akses API, dan dukungan khusus untuk klien enterprise.
               </p>
               <Button variant="primary" size="lg">
                 <Mail className="w-4 h-4 mr-2" />
-                Contact Enterprise Team
+                Hubungi Tim Enterprise
               </Button>
             </Card>
           </div>

@@ -1,7 +1,7 @@
 // API endpoint untuk prediksi diagnosis penyakit paru-paru
 // Implementasi backend untuk inferensi model TensorFlow.js
 
-import { CLASSES, MODEL_CONFIG, THRESHOLDS, DISEASE_INFO } from '../../utils/constants';
+import { CLASSES, MODEL_CONFIG, THRESHOLDS } from '../../utils/constants';
 import { preprocessImageForModel, validateImageData } from '../../utils/imageProcessing';
 
 // Global model variable untuk caching
@@ -95,15 +95,7 @@ export default async function handler(req, res) {
     // Format hasil
     const result = {
       success: true,
-      prediction: {
-        ...prediction,
-        processing_time: processingTime,
-        model_info: {
-          version: MODEL_CONFIG.VERSION,
-          inputSize: MODEL_CONFIG.INPUT_SIZE,
-          architecture: MODEL_CONFIG.NAME
-        }
-      },
+      prediction,
       metadata: {
         filename: filename || 'unknown.jpg',
         processingTime,
@@ -157,15 +149,10 @@ async function runPrediction(imageData, options = {}) {
     const insights = generateInsights(predictions, predictedClass);
 
     return {
-      prediction: predictedClass,
       predictedClass,
       predictedClassIdx,
       confidence,
       confidenceLevel,
-      confidence_scores: predictions.reduce((acc, conf, idx) => {
-        acc[CLASSES.LABELS[idx]] = conf;
-        return acc;
-      }, {}),
       allConfidences: predictions.map((conf, idx) => ({
         class: CLASSES.LABELS[idx],
         confidence: conf,
@@ -175,7 +162,7 @@ async function runPrediction(imageData, options = {}) {
       insights,
       riskLevel: calculateRiskLevel(predictedClass, confidence),
       nextSteps: getNextSteps(predictedClass),
-      disclaimer: CLASSES.DISCLAIMER || 'Hasil diagnosis ini hanya untuk referensi dan tidak menggantikan konsultasi medis profesional.'
+      disclaimer: CLASSES.DISCLAIMER
     };
   } catch (error) {
     console.error('Error in prediction:', error);
@@ -258,35 +245,28 @@ function evaluateConfidenceLevel(confidence) {
  * Generate rekomendasi berdasarkan hasil prediksi
  */
 function generateRecommendations(predictedClass, confidence) {
-  // Get disease-specific recommendations from DISEASE_INFO
-  const diseaseInfo = DISEASE_INFO[predictedClass];
-  const medicalRecommendations = diseaseInfo?.recommendations || [];
+  const baseRecommendations = CLASSES.RECOMMENDATIONS[predictedClass] || [];
   
-  // Add confidence-based recommendations
-  const allRecommendations = [...medicalRecommendations];
+  // Tambah rekomendasi berdasarkan confidence level
+  const confidenceRecommendations = [];
   
   if (confidence < THRESHOLDS.MEDIUM_CONFIDENCE) {
-    allRecommendations.push({
-      title: 'Confidence Rendah',
-      description: 'Model kurang yakin dengan prediksi ini. Disarankan pemeriksaan tambahan atau konsultasi dengan dokter spesialis radiologi.',
-      urgency: 'moderate'
-    });
-    
-    allRecommendations.push({
-      title: 'Kualitas Gambar',
-      description: 'Pertimbangkan untuk mengambil foto X-ray ulang dengan kualitas yang lebih baik.',
-      urgency: 'normal'
-    });
+    confidenceRecommendations.push(
+      'Confidence rendah - disarankan pemeriksaan tambahan',
+      'Konsultasi dengan dokter spesialis radiologi',
+      'Pertimbangkan untuk mengambil foto X-ray ulang dengan kualitas lebih baik'
+    );
   }
 
-  // Add general medical disclaimers
-  allRecommendations.push({
-    title: 'Disclaimer Medis',
-    description: 'Hasil ini hanya untuk tujuan edukasi dan penelitian. Selalu konsultasi dengan tenaga medis profesional.',
-    urgency: 'normal'
-  });
-
-  return allRecommendations;
+  return {
+    medical: baseRecommendations,
+    technical: confidenceRecommendations,
+    general: [
+      'Hasil ini hanya untuk tujuan edukasi dan penelitian',
+      'Selalu konsultasi dengan tenaga medis profesional',
+      'Jangan gunakan hasil ini sebagai pengganti diagnosis medis'
+    ]
+  };
 }
 
 /**

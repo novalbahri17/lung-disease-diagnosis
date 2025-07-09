@@ -7,49 +7,49 @@ export default function About() {
   const features = [
     {
       icon: Heart,
-      title: "Healthcare Innovation",
-      description: "Leveraging cutting-edge AI technology to revolutionize lung disease diagnosis and improve patient outcomes worldwide."
+      title: "Inovasi Kesehatan",
+      description: "Memanfaatkan teknologi AI terdepan untuk merevolusi diagnosis penyakit paru-paru dan meningkatkan hasil perawatan pasien di seluruh dunia."
     },
     {
       icon: Users,
-      title: "Expert Team",
-      description: "Our team combines medical professionals, AI researchers, and software engineers to deliver accurate and reliable solutions."
+      title: "Tim Ahli",
+      description: "Tim kami menggabungkan tenaga medis profesional, peneliti AI, dan insinyur perangkat lunak untuk memberikan solusi yang akurat dan dapat diandalkan."
     },
     {
       icon: Award,
-      title: "High Accuracy",
-      description: "Our CNN-based models achieve industry-leading accuracy rates through advanced transfer learning techniques."
+      title: "Akurasi Tinggi",
+      description: "Model CNN kami mencapai tingkat akurasi terdepan di industri melalui teknik transfer learning yang canggih."
     },
     {
       icon: BookOpen,
-      title: "Research-Based",
-      description: "Built on extensive medical research and validated datasets to ensure clinical relevance and reliability."
+      title: "Berbasis Penelitian",
+      description: "Dibangun berdasarkan penelitian medis yang ekstensif dan dataset yang tervalidasi untuk memastikan relevansi klinis dan keandalan."
     }
   ];
 
   const team = [
     {
       name: "Dr. Sarah Johnson",
-      role: "Chief Medical Officer",
-      description: "Pulmonologist with 15+ years of experience in respiratory medicine and AI applications."
+      role: "Kepala Bagian Medis",
+      description: "Dokter spesialis paru dengan pengalaman 15+ tahun dalam kedokteran respiratori dan aplikasi AI."
     },
     {
       name: "Alex Chen",
-      role: "AI Research Lead",
-      description: "PhD in Machine Learning with expertise in medical image analysis and deep learning."
+      role: "Pemimpin Penelitian AI",
+      description: "PhD dalam Machine Learning dengan keahlian dalam analisis citra medis dan deep learning."
     },
     {
       name: "Maria Rodriguez",
-      role: "Software Engineer",
-      description: "Full-stack developer specializing in healthcare applications and user experience design."
+      role: "Insinyur Perangkat Lunak",
+      description: "Full-stack developer yang mengkhususkan diri dalam aplikasi kesehatan dan desain pengalaman pengguna."
     }
   ];
 
   return (
     <Layout>
       <Head>
-        <title>About Us - Lung Disease Diagnosis AI</title>
-        <meta name="description" content="Learn about our mission to revolutionize lung disease diagnosis using artificial intelligence and medical imaging." />
+        <title>Tentang Kami - AI Diagnosis Penyakit Paru-paru</title>
+        <meta name="description" content="Pelajari tentang misi kami untuk merevolusi diagnosis penyakit paru-paru menggunakan kecerdasan buatan dan pencitraan medis." />
       </Head>
 
       {/* Hero Section */}
@@ -57,11 +57,11 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              About Our Mission
+              Tentang Misi Kami
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              We're dedicated to transforming healthcare through AI-powered lung disease diagnosis, 
-              making accurate medical analysis accessible to healthcare providers worldwide.
+              Kami berdedikasi untuk mentransformasi layanan kesehatan melalui diagnosis penyakit paru-paru bertenaga AI, 
+              membuat analisis medis yang akurat dapat diakses oleh penyedia layanan kesehatan di seluruh dunia.
             </p>
           </div>
         </div>
@@ -73,36 +73,36 @@ export default function About() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Misi Kami</h2>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Early detection of lung diseases can save lives. Our AI-powered platform provides 
-                  healthcare professionals with advanced diagnostic tools that analyze chest X-rays 
-                  with remarkable accuracy, helping to identify conditions like pneumonia, COVID-19, 
-                  and other respiratory ailments.
+                  Deteksi dini penyakit paru-paru dapat menyelamatkan nyawa. Platform bertenaga AI kami menyediakan 
+                  tenaga medis profesional dengan alat diagnostik canggih yang menganalisis foto rontgen dada 
+                  dengan akurasi yang luar biasa, membantu mengidentifikasi kondisi seperti pneumonia, COVID-19, 
+                  dan penyakit pernapasan lainnya.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  By combining state-of-the-art convolutional neural networks with transfer learning 
-                  techniques, we've created a system that can assist medical professionals in making 
-                  faster, more accurate diagnoses, ultimately improving patient care and outcomes.
+                  Dengan menggabungkan jaringan saraf konvolusional terdepan dengan teknik transfer learning, 
+                  kami telah menciptakan sistem yang dapat membantu tenaga medis profesional dalam membuat 
+                  diagnosis yang lebih cepat dan akurat, pada akhirnya meningkatkan perawatan dan hasil pasien.
                 </p>
               </div>
               <div className="bg-blue-50 p-8 rounded-lg">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Key Statistics</h3>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Statistik Utama</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Diagnostic Accuracy</span>
+                    <span className="text-gray-600">Akurasi Diagnostik</span>
                     <span className="font-semibold text-blue-600">95.2%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Processing Time</span>
-                    <span className="font-semibold text-blue-600">&lt; 30 seconds</span>
+                    <span className="text-gray-600">Waktu Pemrosesan</span>
+                    <span className="font-semibold text-blue-600">&lt; 30 detik</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Supported Conditions</span>
+                    <span className="text-gray-600">Kondisi yang Didukung</span>
                     <span className="font-semibold text-blue-600">8+</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Healthcare Partners</span>
+                    <span className="text-gray-600">Mitra Kesehatan</span>
                     <span className="font-semibold text-blue-600">50+</span>
                   </div>
                 </div>
@@ -117,7 +117,7 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              What Sets Us Apart
+              Yang Membedakan Kami
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {features.map((feature, index) => (
@@ -141,7 +141,7 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Meet Our Team
+              Kenali Tim Kami
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               {team.map((member, index) => (

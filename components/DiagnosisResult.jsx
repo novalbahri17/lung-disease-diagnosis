@@ -14,7 +14,8 @@ import {
   Share2,
   Clock,
   User,
-  Stethoscope
+  Stethoscope,
+  Upload
 } from 'lucide-react';
 import Card from './ui/Card';
 import Button from './ui/Button';
@@ -137,7 +138,7 @@ const DiagnosisResult = ({ result, imageData, onReset, validationResults }) => {
                 {diseaseInfo.name}
               </h2>
               <p className="text-sm text-gray-600 mt-1">
-                Confidence: {Math.round(confidence * 100)}%
+                Kepercayaan: {Math.round(confidence * 100)}%
               </p>
             </div>
           </div>
@@ -166,14 +167,14 @@ const DiagnosisResult = ({ result, imageData, onReset, validationResults }) => {
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold flex items-center">
             <TrendingUp className="w-5 h-5 mr-2 text-blue-500" />
-            Confidence Scores
+            Skor Kepercayaan
           </h3>
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setShowDetails(!showDetails)}
           >
-            {showDetails ? 'Hide' : 'Show'} Details
+            {showDetails ? 'Sembunyikan' : 'Tampilkan'} Detail
           </Button>
         </div>
 
@@ -217,6 +218,125 @@ const DiagnosisResult = ({ result, imageData, onReset, validationResults }) => {
           </div>
         )}
       </Card>
+
+      {/* Validation Results */}
+      {validationResults && (
+        <Card>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold flex items-center">
+              <Shield className="w-5 h-5 mr-2 text-blue-500" />
+              Hasil Validasi Gambar
+            </h3>
+          </div>
+
+          <div className="space-y-3">
+            {/* Validation Status */}
+            <div className={`p-3 rounded-lg ${
+              validationResults.isValid 
+                ? 'bg-green-50 border border-green-200' 
+                : 'bg-red-50 border border-red-200'
+            }`}>
+              <div className="flex items-center space-x-2">
+                {validationResults.isValid ? (
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                ) : (
+                  <AlertTriangle className="w-5 h-5 text-red-500" />
+                )}
+                <span className={`font-medium ${
+                  validationResults.isValid ? 'text-green-800' : 'text-red-800'
+                }`}>
+                  {validationResults.isValid ? 'Gambar Valid' : 'Gambar Tidak Valid'}
+                </span>
+              </div>
+            </div>
+
+            {/* Quality Metrics */}
+            {validationResults.quality && (
+              <div className="bg-gray-50 p-3 rounded-lg">
+                <h4 className="text-sm font-medium text-gray-700 mb-2">Metrik Kualitas:</h4>
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  <div>
+                    <span className="text-gray-600">Resolusi:</span>
+                    <span className="ml-2 font-medium">
+                      {validationResults.quality.width}×{validationResults.quality.height}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-gray-600">Format:</span>
+                    <span className="ml-2 font-medium">{validationResults.quality.format}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-600">Ukuran:</span>
+                    <span className="ml-2 font-medium">
+                      {(validationResults.quality.size / 1024 / 1024).toFixed(2)} MB
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-gray-600">Kualitas:</span>
+                    <span className="ml-2 font-medium">
+                      {validationResults.quality.quality || 'Baik'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Warnings */}
+            {validationResults.warnings && validationResults.warnings.length > 0 && (
+              <div className="bg-orange-50 border border-orange-200 p-3 rounded-lg">
+                <h4 className="text-sm font-medium text-orange-800 mb-2 flex items-center">
+                  <AlertTriangle className="w-4 h-4 mr-1" />
+                  Peringatan:
+                </h4>
+                <ul className="text-sm text-orange-700 space-y-1">
+                  {validationResults.warnings.map((warning, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="mr-2">•</span>
+                      <span>{warning}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Recommendations */}
+            {validationResults.recommendations && validationResults.recommendations.length > 0 && (
+              <div className="bg-blue-50 border border-blue-200 p-3 rounded-lg">
+                <h4 className="text-sm font-medium text-blue-800 mb-2 flex items-center">
+                  <Info className="w-4 h-4 mr-1" />
+                  Rekomendasi:
+                </h4>
+                <ul className="text-sm text-blue-700 space-y-1">
+                  {validationResults.recommendations.map((rec, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="mr-2">•</span>
+                      <span>{rec}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Errors */}
+            {validationResults.errors && validationResults.errors.length > 0 && (
+              <div className="bg-red-50 border border-red-200 p-3 rounded-lg">
+                <h4 className="text-sm font-medium text-red-800 mb-2 flex items-center">
+                  <AlertTriangle className="w-4 h-4 mr-1" />
+                  Error:
+                </h4>
+                <ul className="text-sm text-red-700 space-y-1">
+                  {validationResults.errors.map((error, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="mr-2">•</span>
+                      <span>{error}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </Card>
+      )}
 
       {/* Rekomendasi Medis */}
       {recommendations.length > 0 && (
@@ -316,7 +436,7 @@ const DiagnosisResult = ({ result, imageData, onReset, validationResults }) => {
           className="flex items-center space-x-2"
         >
           <Share2 className="w-4 h-4" />
-          <span>Share</span>
+          <span>Bagikan</span>
         </Button>
 
         <Button

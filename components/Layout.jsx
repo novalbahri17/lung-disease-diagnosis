@@ -13,9 +13,9 @@ const Layout = ({ children, title, description, className = '' }) => {
   const pageTitle = title ? `${title} | ${APP_CONFIG.NAME}` : APP_CONFIG.NAME;
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Beranda', href: '/' },
+    { name: 'Tentang', href: '/about' },
+    { name: 'Kontak', href: '/contact' },
   ];
 
   return (

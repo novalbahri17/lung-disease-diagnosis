@@ -2,10 +2,10 @@
 
 // Application Configuration
 export const APP_CONFIG = {
-  NAME: 'Lung Disease AI',
+  NAME: 'AI Diagnosis Paru-paru',
   VERSION: '1.0.0',
-  DESCRIPTION: 'AI-powered lung disease diagnosis from X-ray images',
-  AUTHOR: 'Medical AI Team',
+  DESCRIPTION: 'Diagnosis penyakit paru-paru bertenaga AI dari gambar X-ray',
+  AUTHOR: 'Tim AI Medis',
   MAX_FILE_SIZE: 10 * 1024 * 1024, // 10MB
   SUPPORTED_FORMATS: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
   MODEL_INPUT_SIZE: 224,
@@ -131,10 +131,10 @@ export const PROCESSING_STEPS = [
 
 // Metadata Configuration
 export const METADATA = {
-  TITLE: 'Lung Disease AI - Diagnosis Penyakit Paru-paru',
-  DESCRIPTION: 'Sistem diagnosis AI untuk mendeteksi penyakit paru-paru dari gambar X-ray menggunakan deep learning.',
-  KEYWORDS: 'lung disease, AI diagnosis, X-ray analysis, pneumonia detection, COVID-19 detection, tuberculosis detection, medical AI',
-  AUTHOR: 'Medical AI Team',
+  TITLE: 'AI Diagnosis Paru-paru - Deteksi Penyakit Paru-paru',
+  DESCRIPTION: 'Sistem diagnosis AI untuk mendeteksi penyakit paru-paru dari gambar X-ray menggunakan pembelajaran mendalam.',
+  KEYWORDS: 'penyakit paru-paru, diagnosis AI, analisis X-ray, deteksi pneumonia, deteksi COVID-19, deteksi tuberkulosis, AI medis',
+  AUTHOR: 'Tim AI Medis',
   FAVICON: '/favicon.ico',
   OG_IMAGE: '/images/og-image.jpg',
   ROBOTS: 'index, follow',
@@ -178,6 +178,59 @@ export const MODEL_CONFIG = {
   }
 };
 
+// Classes Configuration
+export const CLASSES = {
+  LABELS: ['Normal', 'Pneumonia', 'COVID', 'Tuberculosis'],
+  COUNT: 4,
+  NORMAL: 0,
+  PNEUMONIA: 1,
+  COVID: 2,
+  TUBERCULOSIS: 3,
+  RECOMMENDATIONS: {
+    'Normal': [
+      'Pertahankan gaya hidup sehat',
+      'Lakukan pemeriksaan rutin tahunan',
+      'Hindari paparan asap rokok',
+      'Olahraga teratur untuk menjaga kesehatan paru-paru'
+    ],
+    'Pneumonia': [
+      'Segera konsultasi dengan dokter',
+      'Istirahat total dan minum banyak cairan',
+      'Ikuti pengobatan antibiotik sesuai resep dokter',
+      'Monitor gejala demam dan sesak napas'
+    ],
+    'COVID': [
+      'Isolasi mandiri segera',
+      'Hubungi layanan kesehatan COVID-19',
+      'Monitor saturasi oksigen',
+      'Minum obat sesuai protokol kesehatan'
+    ],
+    'Tuberculosis': [
+      'Konsultasi dengan dokter spesialis paru',
+      'Mulai pengobatan OAT (Obat Anti Tuberkulosis)',
+      'Isolasi untuk mencegah penularan',
+      'Kontrol rutin sesuai jadwal dokter'
+    ]
+  }
+};
+
+// Thresholds Configuration
+export const THRESHOLDS = {
+  CONFIDENCE: {
+    HIGH: 0.8,
+    MEDIUM: 0.6,
+    LOW: 0.4
+  },
+  RISK: {
+    HIGH: 0.7,
+    MEDIUM: 0.5,
+    LOW: 0.3
+  },
+  HIGH_CONFIDENCE: 0.8,
+  MEDIUM_CONFIDENCE: 0.6,
+  LOW_CONFIDENCE: 0.4
+};
+
 // Error Messages
 export const ERROR_MESSAGES = {
   FILE_TOO_LARGE: 'File terlalu besar. Maksimal 10MB.',
@@ -207,6 +260,8 @@ const constants = {
   API_CONFIG,
   UI_CONFIG,
   MODEL_CONFIG,
+  CLASSES,
+  THRESHOLDS,
   ERROR_MESSAGES,
   SUCCESS_MESSAGES
 };

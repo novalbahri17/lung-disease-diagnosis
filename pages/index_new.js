@@ -143,7 +143,7 @@ export default function Home() {
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 Diagnosis Penyakit Paru-Paru
                 <span className="block text-2xl md:text-3xl font-normal mt-2 text-blue-100">
-                  Didukung oleh Kecerdasan Buatan
+                  Powered by Artificial Intelligence
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
@@ -358,7 +358,7 @@ export default function Home() {
               <Card>
                 <div className="p-6 text-center">
                   <Brain className="w-12 h-12 text-blue-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">Pembelajaran Mendalam</h3>
+                  <h3 className="text-xl font-semibold mb-2">Deep Learning</h3>
                   <p className="text-gray-600">
                     Model neural network canggih dengan arsitektur EfficientNetB0 
                     untuk akurasi diagnosis yang tinggi.

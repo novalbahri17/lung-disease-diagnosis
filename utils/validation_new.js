@@ -203,29 +203,6 @@ export async function validateUploadedImage(file, imageDataUrl) {
       results.errors.push(dataValidation.error);
     }
 
-    // Tambahkan rekomendasi berdasarkan jenis file dan ukuran
-    if (results.isValid) {
-      // Rekomendasi berdasarkan ukuran file
-      if (file.size < 500 * 1024) { // Kurang dari 500KB
-        results.warnings.push('Ukuran file relatif kecil, mungkin resolusi rendah');
-        results.recommendations.push('Gunakan gambar dengan resolusi lebih tinggi untuk hasil yang lebih akurat');
-      }
-      
-      // Rekomendasi berdasarkan format file
-      if (file.type === 'image/png') {
-        results.recommendations.push('Format PNG bagus untuk X-ray karena lossless compression');
-      } else if (file.type === 'image/jpeg' || file.type === 'image/jpg') {
-        results.recommendations.push('Format JPEG dapat digunakan, tapi pastikan kualitas kompresi tinggi');
-      }
-
-      // Tambahkan tips umum untuk gambar yang valid
-      if (results.warnings.length === 0 && results.recommendations.length === 0) {
-        results.recommendations.push('Pastikan area paru-paru terlihat jelas dan tidak terpotong');
-        results.recommendations.push('Hindari gambar yang blur atau memiliki banyak noise');
-        results.recommendations.push('Gambar X-ray harus menunjukkan area dada secara lengkap');
-      }
-    }
-
   } catch (error) {
     results.isValid = false;
     results.errors.push(`Error dalam validasi: ${error.message}`);
